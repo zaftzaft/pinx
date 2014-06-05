@@ -1,0 +1,101 @@
+@import "./layout.less";
+
+#illust {
+   a {
+     color: #ecf0f1;
+     text-decoration: none;
+     &:hover {
+       color: #ecf0f1;
+       text-decoration: underline;
+     }
+   }
+
+  > .sidebar {
+    overflow: auto;
+    float: left;
+    width: 18em;
+    height: 100%;
+    background-color: #222;
+    .clearfix;
+
+    > .btn {
+      display: inline-block;
+      margin: 4px;
+      padding: 8px 20px;
+      border: 1px solid #fff;
+      background-color: 0;
+      color: #fff;
+      cursor: pointer;
+
+      &.disabled {
+        @c: average(#fff, #444);
+        color: @c;
+        border-color: @c;
+      }
+
+      &:not(.disabled):hover {
+        background-color: #fff;
+        color: #444;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-width: 1px 0;
+      border-color: #000;
+      border-style: solid;
+      background-color: #444;
+      &:hover {
+        background-color: #555;
+      }
+    }
+
+    > .user {
+      padding: 8px;
+      background-color: #111;
+
+      > img {
+        height: 2em;
+        vertical-align: middle;
+      }
+    }
+
+    > .info {
+      padding: 4px 8px;
+      background-color: #111;
+      color: #efefef;
+    }
+
+    > .comment {
+      padding: 8px;
+      background-color: #111;
+      color: #efefef;
+      line-height: 1.2em;
+      word-break: break-all;
+    }
+
+    > .tags {
+      list-style-type: none;
+      line-height: 1.5em;
+    }
+  }
+
+  > .view {
+    overflow: auto;
+    height: 100%;
+
+    > img {
+      display: block;
+      margin-top: 8px;
+      zoom: 1;
+      &:nth-of-type(1){
+        margin-top: 0px;
+      }
+    }
+  }
+
+}

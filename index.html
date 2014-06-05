@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<title>PiNx</title>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/lib/jquery-2.1.1.min.js"></script>
+<script src="js/lib/director.min.js"></script>
+<script src="js/lib/exchanger.js"></script>
+<body>
+
+<div id="sidebar">
+  <a href="#!/home">
+    <i class="ion-home"></i>
+  </a>
+  <a href="#!/ranking/daily"> <i class="ion-stats-bars"></i>
+  </a>
+</div>
+
+<div id="content">
+
+  <div id="boot" style="display:block">
+    <h1>PiNx</h1>
+  </div>
+
+  <div id="home">
+    <ul>
+      <li v-repeat="categories">
+        <a href="#!/ranking/{{$value}}">{{$value}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="ranking">
+    <div
+      class="panel"
+      v-repeat="contents"
+    >
+      <div class="header">
+        <div class="title">
+          <a href="#!/illust/{{illust_id}}" title="{{illust_id}}{{title}}">{{title || notitle}}</a>
+        </div>
+      </div>
+      <div class="image" v-call="lazy"></div>
+      <ul class="tags">
+        <li v-repeat="tags">
+          <a href="#!/tag/{{$value}}">{{$value}}</a>
+        </li>
+      </ul>
+      <div class="footer">
+        <div class="user">
+          <img v-attr="src:profile_img">
+          <a href="#!/user/{{user_id}}" title="{{user_name}}">{{user_name}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="next"
+      v-on="click: getNext"
+      v-show="next"
+      >Next{{next}}</div>
+  </div>
+
+  <div id="illust">
+    <div class="sidebar">
+      <div class="user">
+        <img v-attr="src:profile_img">
+        <a href="#!/user/{{user_id}}">
+        {{author}}
+        </a>
+      </div>
+      <div class="info">{{date | jadate}}</div>
+      <div class="info">
+        <i class="ion-eye"></i> {{view}} 
+        <i class="ion-thumbsup"></i> {{rating}} 
+        <i class="ion-star"></i> {{total}}
+      </div>
+      <div
+        class="btn"
+        v-call="download"
+        v-class="
+          disabled: downloaded
+        "
+        ><i class="ion-arrow-down-a"></i> Download</div>
+      <ul class="tags">
+        <li v-repeat="tags">
+          <a href="#!/tag/{{$value}}">{{$value}}</a>
+        </li>
+      </ul>
+      <div class="comment">{{comment}}</div>
+    </div>
+    <div class="view">
+      <img v-repeat="urls" v-call="zoom" v-attr="src: $value">
+    </div>
+  </div>
+
+  <div id="tag">
+    <div v-repeat="contents">
+      {{> panel}}
+    </div>
+    <div class="clearfix"></div>
+    <div class="next"
+      v-on="click: getNext"
+      v-show="next"
+      >Next{{next}}</div>
+  </div>
+
+  <div id="user">
+    <div class="header">
+      <img v-attr="src:icon">
+      <div>{{name}}</div>
+    </div>
+    <div v-repeat="images">
+    {{> panel}}
+    </div>
+    <div class="clearfix"></div>
+    <div class="next"
+      v-on="click: getNext"
+      v-show="next"
+      >Next{{next}}</div>
+  </div>
+
+</div>
+
+<script src="js/src/init.js"></script>
+<script src="js/pinx.js"></script>
+<script src="js/src/ranking.js"></script>
+<script src="js/src/illust.js"></script>
+<script src="js/src/user.js"></script>
+<script src="js/src/home.js"></script>
+<script src="js/src/tag.js"></script>
+
+<script src="js/finish.js"></script>

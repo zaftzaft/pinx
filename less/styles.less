@@ -1,0 +1,34 @@
+@import "./normalize.less";
+@import "./sidebar.less";
+@import "./ranking.less";
+@import "./illust.less";
+@import "./user.less";
+@import "./ionicons.less";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "IPA Pゴシック";
+}
+
+#content {
+  overflow-y: auto;
+  & > * {
+    display: none;
+    height: 100%;
+  }
+}
+
+#boot {
+  background-color: #444;
+  color: #effafc;
+
+  > h1 {
+    letter-spacing: 0.3em;
+    font-size: 6em;
+    margin: 0 16px;
+  }
+}

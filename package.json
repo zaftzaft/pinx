@@ -1,0 +1,21 @@
+{
+  "main": "index.html",
+  "name": "PiNx",
+  "description": "Pixiv Viewer",
+  "version": "0.0.1",
+  "window": {
+    "title": "PiNx",
+    "width": 830,
+    "toolbar": true
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1",
+    "request": "^2.36.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-less": "^1.2.3",
+    "gulp-rename": "^1.2.0"
+  }
+}
