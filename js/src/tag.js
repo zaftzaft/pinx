@@ -12,7 +12,6 @@
   });
 
   Pinx.router.on(/!\/tag\/(.+)/, function(word){
-    console.log(word);
     Tag.get({
       word: word
     }, function(err, res){
