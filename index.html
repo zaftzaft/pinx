@@ -23,11 +23,9 @@
   </div>
 
   <div id="home">
-    <ul>
-      <li v-repeat="categories">
-        <a href="#!/ranking/{{$value}}">{{$value}}</a>
-      </li>
-    </ul>
+    <a href="#!/ranking/{{$value}}" class="category {{$value}}" v-repeat="categories">
+      {{$value}}
+    </a>
   </div>
 
   <div id="ranking">

@@ -1,0 +1,32 @@
+#home {
+  > .category {
+    @c: 11;
+    .b (@d: 0) {
+      background-color: hsl(@d, 80%, 55%);
+    }
+
+    display: block;
+    float: left;
+    width: 8em;
+    height: 4em;
+    margin-top: 1em;
+    margin-left: 1em;
+    padding: 0.5em;
+    color: #fff;
+    text-decoration: none;
+
+    &.daily      { .b(360 / @c * 0);  }
+    &.weekly     { .b(360 / @c * 1);  }
+    &.monthly    { .b(360 / @c * 2);  }
+    &.rookie     { .b(360 / @c * 3);  }
+    &.original   { .b(360 / @c * 4);  }
+    &.male       { .b(360 / @c * 5);  }
+    &.famale     { .b(360 / @c * 6);  }
+    &.daily_r18  { .b(360 / @c * 7);  }
+    &.weekly_r18 { .b(360 / @c * 8);  }
+    &.male_r18   { .b(360 / @c * 9);  }
+    &.famale_r18 { .b(360 / @c * 10); }
+
+  }
+
+}
