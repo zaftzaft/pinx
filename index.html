@@ -104,8 +104,9 @@
 
   <div id="user">
     <div class="header">
-      <img v-attr="src:icon">
-      <div>{{name}}</div>
+      <img v-attr="src:profile_img" class="icon">
+      <div class="name">{{user_name}}</div>
+      <div class="description">{{user_comment}}</div>
     </div>
     <div v-repeat="images">
     {{> panel}}

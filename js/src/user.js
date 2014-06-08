@@ -1,4 +1,6 @@
 (function(){
+  var _ = require("lodash");
+
   var User = {};
 
   User.get = require("./js/api/user.js");
@@ -32,21 +34,14 @@
   Pinx.router.on("!/user/:id", function(id){
     User.currentId = id;
     User.get.profile(id, function(err, result){
-      var $elm = $($.parseHTML(result));
-      $el = $elm;
-      var $t = $elm.filter("table").eq(0).find("td");
-      User.vm.$data = {
-        icon:        $elm.find("img").attr("src"),
-        name:        $t.eq(0).text(),
-        homepage:    $t.eq(1).text(),
-        gender:      $t.eq(2).text(),
-        place:       $t.eq(3).text(),
-        age:         $t.eq(4).text(),
-        birthday:    $t.eq(5).text(),
-        job:         $t.eq(6).text(),
-        description: $t.eq(7).html(),
-        next:        2
-      };
+      var json = _.cloneDeep(JSON.parse(result).body);
+
+      json.profile_img = json.profile_img.replace(
+        /\/(\w+)(\.\w+)$/, "/mobile/$1_160.jpg"
+      );
+
+      User.vm.$data = json;
+      User.vm.$set("next", 2);
       User.show();
     });
 

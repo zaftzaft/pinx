@@ -10,9 +10,12 @@ var User = {};
 // Profile
 User.profile = function(id, callback){
   request({
-    url: root + "/profile.php",
+    //url: root + "/profile.php",
+    url: "http://www.pixiv.net/rpc/get_profile.php",
     qs: {
-      id: id
+      //id: id
+      user_id:   id,
+      PHPSESSID: login.key()
     }
   }, function(err, resp, body){
     callback && callback(err, body);
