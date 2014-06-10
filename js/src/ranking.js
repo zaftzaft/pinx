@@ -36,7 +36,9 @@
         mode: category
       }, function(err, result){
         if(err){
-          throw err;
+          Pinx.ErrorVM.$data = err;
+          Pinx.ErrorShow();
+          return;
         }
         Ranking.vm.$data = result;
 

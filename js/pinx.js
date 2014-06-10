@@ -19,6 +19,14 @@
     }
   });
 
+  Pinx.ErrorVM = new Vue({
+    el: "#error"
+  });
+
+  Pinx.ErrorShow = Pinx.X.set($(Pinx.ErrorVM.$el), {
+    name: "error"
+  });
+
   return window.Pinx = Pinx;
 })();
 
@@ -29,7 +37,7 @@
   Vue.filter("notitle", function(value){
     return value || "**notitle**";
   });
-  
+
   Vue.filter("jadate", function(value){
     return moment(value).lang("ja")
     .format("YYYY年MMMMDD日(ddd) HH時mm分ss秒");

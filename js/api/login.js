@@ -6,6 +6,7 @@ var config = require("./config.js");
 
 var Login = {};
 // Get Sessid
+
 Login.login = function(callback){
   request.post({
     url: "https://touch.secure.pixiv.net/login.php",
@@ -31,9 +32,11 @@ Login.login = function(callback){
 
 Login.get = function(callback){
   Login.login(function(err, sessid){
-    if(err){ throw err; }
+    if(err){
+      return console.log("LOGIN FAILD");
+      //throw err;
+    }
     Login.sessid = sessid;
-    //fs.writeFile(__dirname + "/sessid.txt", sessid);
     fs.writeFile(paths.sessid, sessid);
     callback && callback(sessid);
   });
@@ -55,6 +58,7 @@ Login.isExpires = function(){
 var filename = paths.sessid;
 Login.sessid = fs.existsSync(filename) ?
   fs.readFileSync(filename, "utf8") : "expires=0;";
+
 if(Login.isExpires()){
   Login.get(function(id){
     console.log("login", id);

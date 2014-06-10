@@ -18,6 +18,10 @@
 
 <div id="content">
 
+  <div id="error">
+    <div class="stack">{{stack}}</div>
+  </div>
+
   <div id="boot" style="display:block">
     <h1>PiNx</h1>
   </div>
@@ -35,7 +39,7 @@
     >
       <div class="header">
         <div class="title">
-          <a href="#!/illust/{{illust_id}}" title="{{illust_id}}{{title}}">{{title || notitle}}</a>
+          <a href="#!/illust/{{illust_id}}" title="{{illust_id}}{{title}}">{{title | notitle}}</a>
         </div>
       </div>
       <div class="image" v-call="lazy"></div>
