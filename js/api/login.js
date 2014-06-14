@@ -54,7 +54,6 @@ Login.isExpires = function(){
   return +new Date > +new Date(this.expires());
 };
 
-//var filename = __dirname + "/sessid.txt";
 var filename = paths.sessid;
 Login.sessid = fs.existsSync(filename) ?
   fs.readFileSync(filename, "utf8") : "expires=0;";

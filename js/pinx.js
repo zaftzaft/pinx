@@ -12,7 +12,7 @@
         setTimeout(function(){
           $(that.el).css(
             "backgroundImage",
-            "url(" + that.vm.$data.url +  ")"
+            "url(" + that.vm.$data.url + ")"
           );
         }, this.vm.$index * 10);
       }
@@ -24,6 +24,7 @@
   });
 
   Pinx.ErrorShow = Pinx.X.set($(Pinx.ErrorVM.$el), {
+    useCache: false,
     name: "error"
   });
 
