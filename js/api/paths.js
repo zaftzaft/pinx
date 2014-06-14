@@ -14,5 +14,6 @@ module.exports = {
   theme:   path.join(baseDir, "theme"),
   tmp:     path.join(baseDir, "tmp"),
   config:  path.join(baseDir, "config.json"),
-  sessid:  path.join(baseDir, "sessid.txt")
+  sessid:  path.join(baseDir, "sessid.txt"),
+  favorite: path.join(baseDir, "favorite.json")
 };

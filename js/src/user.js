@@ -3,6 +3,7 @@
 
   var User = {};
 
+  var Favorite = require("./js/api/favorite.js");
   User.get = require("./js/api/user.js");
 
   User.vm = new Pinx.Panel({
