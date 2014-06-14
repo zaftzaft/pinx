@@ -1,7 +1,10 @@
 (function(){
   var Ranking = {};
 
-  var prev = null;
+  var prev = {
+    category: null,
+    date:     null
+  };
 
   Ranking.get = require("./js/api/ranking.js");
 
@@ -27,26 +30,30 @@
     name: "ranking"
   });
 
-  Pinx.router.on("!/ranking/:category", function(category){
-    if(category === prev){
+  // !/ranking/:category/date?
+  Pinx.router.on(/!\/ranking\/([^\/]+)\/?(\d*)/, function(category, date){
+    date = date || null;
+
+    if(category === prev.category && date == prev.date){
+      return Ranking.show();
+    }
+
+    Ranking.get({
+      mode: category,
+      date: date
+    }, function(err, result){
+      if(err){
+        Pinx.ErrorVM.$data = err;
+        Pinx.ErrorShow();
+        return;
+      }
+      Ranking.vm.$data = result;
+
       Ranking.show();
-    }
-    else{
-      Ranking.get({
-        mode: category
-      }, function(err, result){
-        if(err){
-          Pinx.ErrorVM.$data = err;
-          Pinx.ErrorShow();
-          return;
-        }
-        Ranking.vm.$data = result;
+    });
 
-        Ranking.show();
-      });
-    }
-    prev = category;
+    prev.category = category;
+    prev.date = date;
   });
-
 
 })();
